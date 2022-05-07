@@ -1,8 +1,13 @@
 # 收货地址智能解析（Go语言版）
 
-提高成功率（临时修改）
-提高成功率（临时修改）
-提高成功率（临时修改）
+去掉自下而上的地址解析提高了成功率，降低了性能。
+原版请使用：
+github.com/pupuk/addr
+github.com/pupuk/addr
+github.com/pupuk/addr
+github.com/pupuk/addr
+github.com/pupuk/addr
+github.com/pupuk/addr
 
 ## 1. 基本介绍
 
@@ -30,13 +35,13 @@ Go语言版本采用hash map索引检索模式，对关键词进行匹配，将�
 - Install
 
   - ```git
-    go get github.com/pupuk/addr
+    go get github.com/wtrj2020/addr
     ```
 
 - 使用git克隆本项目
 
   - ```git
-    git clone https://github.com/pupuk/addr.git
+    git clone https://github.com/wtrj2020/addr.git
     ```
 
 - 索引树自动生成
@@ -54,7 +59,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/pupuk/addr"
+	"github.com/wtrj2020/addr"
 )
 
 func main() {
