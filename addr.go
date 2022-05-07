@@ -104,7 +104,7 @@ func Parse(address *Address) *Address {
 	pArr := pReg.FindAllString(address.Address, -1)
 	// 匹配所有市级
 	// 由于该匹配可能会遗漏部分，所以合并省级匹配
-	cReg := regexp.MustCompile(`.+?(省|市|自治州|州|地区|盟|县|自治县|区|林区)`)
+	cReg := regexp.MustCompile(`.+?(省|市|自治州|地区|盟|县|自治县|区|林区)`)
 	cArr := append(cReg.FindAllString(address.Address, -1), pArr...)
 	// 匹配所有区县级
 	// 由于该匹配可能会遗漏部分(如：东乡区)所以合并市级匹配
@@ -133,7 +133,7 @@ I:
 		}
 	}
 	// 处理市级
-	if address.City == "" {
+	if 1 == 1 {
 		for _, c := range cArr {
 			if r1, ok := areaMap.CityByName[c]; ok {
 				address.City = r1[0].Name
@@ -146,7 +146,7 @@ I:
 	}
 
 	// 处理省级
-	if address.Province == "" {
+	if 1 == 1 {
 		for _, p := range pArr {
 			if r1, ok := areaMap.ProvinceByName[p]; ok {
 				address.Province = r1[0].Name
@@ -158,6 +158,68 @@ I:
 	}
 	return address
 }
+
+// Parse 智能解析出省市区+街道地址
+// func Parse(address *Address) *Address {
+// 	// 匹配所有省级
+// 	pReg := regexp.MustCompile(`.+?(省|市|自治区|特别行政区|区)`)
+// 	pArr := pReg.FindAllString(address.Address, -1)
+// 	// 匹配所有市级
+// 	// 由于该匹配可能会遗漏部分，所以合并省级匹配
+// 	cReg := regexp.MustCompile(`.+?(省|市|自治州|州|地区|盟|县|自治县|区|林区)`)
+// 	cArr := append(cReg.FindAllString(address.Address, -1), pArr...)
+// 	// 匹配所有区县级
+// 	// 由于该匹配可能会遗漏部分(如：东乡区)所以合并市级匹配
+// 	rReg := regexp.MustCompile(`.+?(市|县|自治县|旗|自治旗|区|林区|特区|街道|镇|乡)`)
+// 	rArr := append(rReg.FindAllString(address.Address, -1), cArr...)
+
+// 	// 处理区县级
+// I:
+// 	for _, r := range rArr {
+// 		if r1, ok := areaMap.RegionByName[r]; ok && len(r1) == 1 {
+// 			address.Region = r1[0].Name
+// 			address.PostCode = strconv.Itoa(r1[0].Zipcode)
+// 			getAddressById(address, r1[0].Pid, city)
+// 			break
+// 		} else if ok {
+// 			for _, r2 := range r1 {
+// 				address.Region = r2.Name
+// 				address.PostCode = strconv.Itoa(r1[0].Zipcode)
+// 				getAddressById(address, r2.Pid, city)
+// 				for _, v := range cArr {
+// 					if address.City == v {
+// 						break I
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// 	// 处理市级
+// 	if address.City == "" {
+// 		for _, c := range cArr {
+// 			if r1, ok := areaMap.CityByName[c]; ok {
+// 				address.City = r1[0].Name
+// 				address.PostCode = strconv.Itoa(r1[0].Zipcode)
+// 				getAddressById(address, r1[0].Pid, province)
+// 				getAddressByPid(address, r1[0].Id, region, rArr)
+// 				break
+// 			}
+// 		}
+// 	}
+
+// 	// 处理省级
+// 	if address.Province == "" {
+// 		for _, p := range pArr {
+// 			if r1, ok := areaMap.ProvinceByName[p]; ok {
+// 				address.Province = r1[0].Name
+// 				getAddressByPid(address, r1[0].Id, city, cArr)
+// 				getAddressByPid(address, r1[0].Id, region, rArr)
+// 				break
+// 			}
+// 		}
+// 	}
+// 	return address
+// }
 
 const (
 	// 定义map等级常量
