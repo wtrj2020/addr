@@ -84,6 +84,9 @@ func Decompose(info *Address, str string) *Address {
 
 // Smart 智能解析
 func Smart(str string) *Address {
+	
+	str=strings.Replace(str, " ", "", -1)
+
 	var info Address
 	info = *Decompose(&info, str)
 	Parse(&info)
