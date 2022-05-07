@@ -1,3 +1,3 @@
-module github.com/pupuk/addr
+module github.com/wtrj2020/addr
 
 go 1.11
