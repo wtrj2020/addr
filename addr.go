@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/pupuk/addr/areaMap"
+	"github.com/wtrj2020/addr/areaMap"
 )
 
 type Address struct {
